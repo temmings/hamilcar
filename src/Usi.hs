@@ -19,6 +19,7 @@ import Data.Array
 import Data.Char
 import Data.Maybe
 import Data.Tuple
+import System.Exit
 
 castEn :: Bool -> Piece.Co
 castEn = Util.modiEn id
@@ -91,6 +92,7 @@ usiLoop bd = do
     sfens <- getLine
     let cmds = words sfens
     case head cmds of
+        "quit" -> exitSuccess
         "isready" -> putStrLn "readyok"
         "position" -> do
             let (bd2, mvs) = readUSIPosition sfens
